@@ -1,0 +1,205 @@
+import time
+
+questions = [
+    {
+        "question": "What is the formula of water in chemistry?",
+        "answer": 'H2O',
+        "info": "Water (H2O) is a common chemical substance with the molecular formula H2O.",
+        "difficulty": "easy"
+    },
+    {
+        "question": "What is the name of Newton's law?",
+        "answer": 'law of inertia',
+        "info": "Newton's first law of motion is often referred to as the law of inertia.",
+        "difficulty": "medium"
+    },
+    {
+        "question": "Who is the painter of the Mona Lisa painting?",
+        "answer": 'Leonardo da Vinci',
+        "info": "The Mona Lisa was painted by the Italian artist Leonardo da Vinci.",
+        "difficulty": "easy"
+    },
+    {
+        "question": "What is the name of the biggest ocean in the world?",
+        "answer": 'Pacific Ocean',
+        "info": "The Pacific Ocean is the largest and deepest of Earth's oceanic divisions.",
+        "difficulty": "medium"
+    },
+    {
+        "question": 'How many planets are there in the solar system?',
+        'answer': '8 planets',
+        "info": "There are eight recognized planets in our solar system.",
+        "difficulty": "easy"
+    },
+    {
+        'question': 'What is the name of the biggest planet in the solar system?',
+        'answer': 'Jupiter',
+        "info": "Jupiter is the largest planet in our solar system.",
+        "difficulty": "medium"
+    },
+    {
+        'question': 'What is the name of the biggest continent in the world?',
+        'answer': 'Asia',
+        "info": "Asia is the largest continent on Earth.",
+        "difficulty": "easy"
+    },
+    {
+        'question': 'What is the name of the biggest country in the world?',
+        'answer': 'Russia',
+        "info": "Russia is the largest country in the world by land area.",
+        "difficulty": "medium"
+    },
+]
+
+max_attempts = 3
+time_limit = 15  # Set the time limit for each question in seconds
+current_question_index = 0
+user_score = 0
+
+# Adjust scoring based on difficulty level
+difficulty_points = {"easy": 1, "medium": 2, "hard": 3}
+
+while current_question_index < len(questions):
+    current_question_data = questions[current_question_index]
+    current_question = current_question_data["question"]
+    current_answer = current_question_data["answer"]
+    current_info = current_question_data["info"]
+    current_difficulty = current_question_data.get("difficulty", "medium")
+
+    attempts = 0
+    while attempts < max_attempts:
+        start_time = time.time()
+        elapsed_time = 0
+
+        print(current_question + "?")
+        print(f"Difficulty: {current_difficulty.capitalize()}")
+        print(f"You have {time_limit} seconds to answer.")
+
+        while elapsed_time < time_limit:
+            remaining_time = int(time_limit - elapsed_time)
+            print(f"Time remaining: {remaining_time} seconds")
+            
+            answer = input()
+
+            if answer.lower() == current_answer.lower():
+                user_score += difficulty_points.get(current_difficulty, 2)  # Increment the user's score based on difficulty
+                print("Congratulations! You answered correctly within the time limit. Your current score is:", user_score)
+                print("Additional information: " + current_info)
+                break
+            elif elapsed_time > time_limit:
+                print(f"Time's up! The correct answer is: {current_answer}")
+                break
+            else:
+                elapsed_time = time.time() - start_time
+                attempts += 1
+                if attempts == max_attempts:
+                    print(f"Sorry, you've reached the maximum attempts. The correct answer is: {current_answer}")
+                    break
+                else:
+                    print("Incorrect! Try again or type 'skip' to skip this question.")
+
+                    # Allow users to skip the question
+                    skip_choice = input().lower()
+                    if skip_choice == 'skip':
+                        print(f"The correct answer is: {current_answer}")
+                        break
+
+    current_question_index += 1
+
+print(f"All questions have been answered. Your final score is: {user_score}")
+  import time
+
+questions = [
+    {
+        "question": "What is the formula of water in chemistry?",
+        "answer": 'H2O',
+        "info": "Water (H2O) is a common chemical substance with the molecular formula H2O.",
+        "difficulty": "easy"
+    },
+    {
+        "question": "What is the name of Newton's law?",
+        "answer": 'law of inertia',
+        "info": "Newton's first law of motion is often referred to as the law of inertia.",
+        "difficulty": "medium"
+    },
+    {
+        "question": "Who is the painter of the Mona Lisa painting?",
+        "answer": 'Leonardo da Vinci',
+        "info": "The Mona Lisa was painted by the Italian artist Leonardo da Vinci.",
+        "difficulty": "easy"
+    },
+    {
+        "question": "What is the name of the biggest ocean in the world?",
+        "answer": 'Pacific Ocean',
+        "info": "The Pacific Ocean is the largest and deepest of Earth's oceanic divisions.",
+        "difficulty": "medium"
+    },
+    {
+        "question": 'How many planets are there in the solar system?',
+        'answer': '8 planets',
+        "info": "There are eight recognized planets in our solar system.",
+        "difficulty": "easy"
+    },
+    {
+        'question': 'What is the name of the biggest planet in the solar system?',
+        'answer': 'Jupiter',
+        "info": "Jupiter is the largest planet in our solar system.",
+        "difficulty": "medium"
+    },
+    {
+        'question': 'What is the name of the biggest continent in the world?',
+        'answer': 'Asia',
+        "info": "Asia is the largest continent on Earth.",
+        "difficulty": "easy"
+    },
+    {
+        'question': 'What is the name of the biggest country in the world?',
+        'answer': 'Russia',
+        "info": "Russia is the largest country in the world by land area.",
+        "difficulty": "medium"
+    },
+]
+
+max_attempts = 3
+time_limit = 15  # Set the time limit for each question in seconds
+current_question_index = 0
+user_score = 0
+
+# Adjust scoring based on difficulty level
+difficulty_points = {"easy": 1, "medium": 2, "hard": 3}
+
+while current_question_index < len(questions):
+    current_question_data = questions[current_question_index]
+    current_question = current_question_data["question"]
+    current_answer = current_question_data["answer"]
+    current_info = current_question_data["info"]
+    current_difficulty = current_question_data.get("difficulty", "medium")
+
+    attempts = 0
+    while attempts < max_attempts:
+        start_time = time.time()
+        elapsed_time = 0
+
+        print(current_question + "?")
+        print(f"Difficulty: {current_difficulty.capitalize()}")
+        print(f"You have {time_limit} seconds to answer.")
+
+        while elapsed_time < time_limit:
+            remaining_time = int(time_limit - elapsed_time)
+            print(f"Time remaining: {remaining_time} seconds")
+            
+            answer = input()
+
+            if answer.lower() == current_answer.lower():
+                user_score += difficulty_points.get(current_difficulty, 2)  # Increment the user's score based on difficulty
+                print("Congratulations! You answered correctly within the time limit. Your current score is:", user_score)
+                print("Additional information: " + current_info)
+                break
+            elif elapsed_time > time_limit:
+                print(f"Time's up! The correct answer is: {current_answer}")
+                break
+            else:
+                elapsed_time = time.time() - start_time
+                attempts += 1
+                if attempts == max_attempts:
+
